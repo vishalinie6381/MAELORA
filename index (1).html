@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAÉLORA – Wear Your Elegance</title>
+<meta name="description" content="MAÉLORA fashion boutique: traditional, western and casual wear for women.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FBF4EA;--blush:#F3D4D6;--blush2:#F9E6E4;--burg:#6B1E2E;--burg2:#4A1220;--gold:#B8924A;--ink:#3A2A2C;--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--burg);font-weight:600}
+.script{font-family:'Great Vibes',cursive;font-weight:400;color:var(--gold)}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+section{padding:84px 0}
+.title{text-align:center;margin-bottom:42px}
+.title .script{font-size:2.4rem;line-height:1}
+.title h2{font-size:2.6rem}
+.title .orn{color:var(--gold);letter-spacing:.5em;font-size:.9rem}
+.btn{display:inline-block;background:var(--burg);color:var(--cream);padding:14px 34px;border-radius:40px;letter-spacing:.08em;font-size:.95rem;transition:.25s;border:1px solid var(--burg)}
+.btn:hover{background:var(--gold);border-color:var(--gold)}
+.btn.ghost{background:transparent;color:var(--burg)}
+.btn.ghost:hover{background:var(--burg);color:var(--cream)}
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(251,244,234,.94);backdrop-filter:blur(8px);border-bottom:1px solid #e8d3c0}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;flex-direction:column;align-items:center;line-height:1;cursor:pointer}
+.logo b{font-family:'Cormorant Garamond',serif;font-size:1.9rem;letter-spacing:.22em;color:var(--burg);font-weight:700}
+.logo small{font-family:'Great Vibes',cursive;color:var(--gold);font-size:1.05rem}
+nav ul{display:flex;gap:30px;list-style:none;align-items:center}
+nav a{text-decoration:none;color:var(--ink);font-size:.95rem;letter-spacing:.05em;cursor:pointer;position:relative}
+nav a:hover{color:var(--burg)}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--gold);transition:.25s}
+nav a:hover::after{width:100%}
+.icons{display:flex;gap:6px;align-items:center}
+.ib{position:relative;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;color:var(--burg);transition:.2s}
+.ib:hover{background:var(--blush)}
+.ib svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6}
+.badge{position:absolute;top:2px;right:0;background:var(--burg);color:#fff;font-size:.68rem;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 4px}
+#burger{display:none}
+/* hero */
+.hero{padding:0;background:linear-gradient(120deg,var(--blush2),var(--blush) 60%,#efc3c6);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:30px;min-height:620px}
+.hero .script{font-size:2.6rem}
+.hero h1{font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:1.05;margin:6px 0 18px}
+.hero p{max-width:460px;margin-bottom:30px;font-size:1.05rem}
+.hero .btns{display:flex;gap:14px;flex-wrap:wrap}
+.hero-art{position:relative;height:540px;display:flex;justify-content:center}
+.arch{width:340px;height:520px;border-radius:170px 170px 18px 18px;border:2px solid var(--gold);padding:10px;position:relative;margin-top:20px}
+.arch .in{width:100%;height:100%;border-radius:160px 160px 10px 10px;overflow:hidden;background:var(--cream)}
+.arch img{width:100%;height:100%;object-fit:cover}
+.hero-art .tag{position:absolute;left:0;bottom:60px;background:var(--cream);padding:14px 20px;border-radius:14px;box-shadow:0 12px 30px rgba(107,30,46,.18);font-family:'Cormorant Garamond',serif;color:var(--burg);font-size:1.15rem}
+.hero-art .tag span{display:block;color:var(--gold);font-family:'Jost';font-size:.8rem}
+.flower{position:absolute;pointer-events:none;opacity:.9}
+/* collections */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.col{border-radius:var(--r);overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(107,30,46,.1);cursor:pointer;transition:.3s;display:flex;flex-direction:column}
+.col:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(107,30,46,.18)}
+.col .img{aspect-ratio:4/4.2;background:var(--blush2)}
+.col img{width:100%;height:100%;object-fit:cover}
+.col .body{padding:22px 24px 26px;text-align:center}
+.col h3{font-size:1.9rem}
+.col ul{list-style:none;color:#7a6468;font-size:.92rem;margin:8px 0 16px}
+.col .link{color:var(--gold);letter-spacing:.1em;font-size:.88rem}
+/* shop */
+.shop{background:#fff}
+.tools{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;margin-bottom:18px}
+.tabs,.chips{display:flex;gap:8px;flex-wrap:wrap}
+.tab,.chip{padding:9px 20px;border-radius:30px;border:1px solid #dcc4b0;font-size:.9rem;transition:.2s;background:var(--cream)}
+.tab:hover,.chip:hover{border-color:var(--burg)}
+.tab.on{background:var(--burg);color:var(--cream);border-color:var(--burg)}
+.chip{padding:6px 15px;font-size:.82rem}
+.chip.on{background:var(--blush);border-color:var(--gold);color:var(--burg)}
+.search{position:relative}
+.search input,select{padding:11px 18px;border-radius:30px;border:1px solid #dcc4b0;background:var(--cream);font:inherit;min-width:230px}
+.search input:focus,select:focus,.form input:focus,.form textarea:focus{outline:2px solid var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:26px}
+.card{background:var(--cream);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:.25s;border:1px solid #eedcca}
+.card:hover{box-shadow:0 14px 34px rgba(107,30,46,.15)}
+.card .pic{position:relative;aspect-ratio:3/3.6;cursor:pointer;background:var(--blush2)}
+.card .pic img{width:100%;height:100%;object-fit:cover}
+.new{position:absolute;top:12px;left:12px;background:var(--gold);color:#fff;font-size:.72rem;padding:3px 12px;border-radius:20px;letter-spacing:.08em}
+.heart{position:absolute;top:8px;right:8px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;color:var(--burg)}
+.heart svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.8;fill:none}
+.heart.on svg{fill:var(--burg)}
+.card .info{padding:14px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .cat{font-size:.78rem;color:var(--gold);letter-spacing:.06em}
+.card h3{font-size:1.28rem;line-height:1.2;cursor:pointer}
+.price{font-weight:500;color:var(--burg);font-size:1.05rem}
+.price s{color:#a89094;font-size:.85rem;margin-left:6px;font-weight:300}
+.stars{color:var(--gold);font-size:.85rem;letter-spacing:2px}
+.sizes{display:flex;gap:5px;flex-wrap:wrap}
+.sz{min-width:34px;height:30px;border:1px solid #d8bfae;border-radius:8px;font-size:.78rem;padding:0 6px;background:#fff}
+.sz.on{background:var(--burg);color:#fff;border-color:var(--burg)}
+.card .add{margin-top:auto;background:var(--burg);color:var(--cream);padding:10px;border-radius:30px;font-size:.88rem;letter-spacing:.06em;transition:.2s}
+.card .add:hover{background:var(--gold)}
+.empty{grid-column:1/-1;text-align:center;padding:50px 10px;color:#7a6468}
+.sub{margin-top:70px}
+.sub h3{font-size:2rem;margin-bottom:6px}
+/* about */
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about .pic{border-radius:200px 200px var(--r) var(--r);overflow:hidden;border:2px solid var(--gold);padding:10px;max-width:420px;margin:auto}
+.about .pic img{border-radius:190px 190px 10px 10px;width:100%}
+.about h2{font-size:2.6rem;margin-bottom:14px}
+.about p{margin-bottom:14px;max-width:520px}
+.stats{display:flex;gap:34px;margin-top:22px}
+.stats b{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--burg);display:block;line-height:1}
+.stats span{font-size:.85rem;color:#7a6468}
+/* reviews */
+.reviews{background:var(--blush2)}
+.rv{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rv blockquote{background:#fff;border-radius:var(--r);padding:28px;box-shadow:0 8px 24px rgba(107,30,46,.08)}
+.rv p{font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin:10px 0 14px;line-height:1.4}
+.rv cite{font-style:normal;color:var(--burg);font-size:.9rem}
+/* contact */
+.contact .wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:50px}
+.contact h2{font-size:2.6rem;margin-bottom:14px}
+.contact li{list-style:none;margin:12px 0;display:flex;gap:12px}
+.contact li span{color:var(--gold)}
+.form{background:#fff;padding:30px;border-radius:var(--r);box-shadow:0 10px 30px rgba(107,30,46,.1);display:grid;gap:14px}
+.form input,.form textarea,.form select{width:100%;padding:13px 16px;border:1px solid #dcc4b0;border-radius:12px;font:inherit;background:var(--cream)}
+.form textarea{min-height:120px;resize:vertical}
+.ok{display:none;background:var(--blush);color:var(--burg2);padding:14px;border-radius:12px}
+/* footer */
+footer{background:var(--burg2);color:#e9d6d0;padding:60px 0 24px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:36px}
+footer h4{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:1.3rem;margin-bottom:12px}
+footer ul{list-style:none}
+footer li{margin:7px 0;font-size:.93rem}
+footer a{color:inherit;text-decoration:none;cursor:pointer}
+footer a:hover{color:var(--gold)}
+footer .logo b{color:var(--cream)}
+.soc{display:flex;gap:10px;margin-top:16px}
+.soc a{width:38px;height:38px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;transition:.2s}
+.soc a:hover{background:var(--gold);color:#fff}
+.soc svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7}
+.copy{border-top:1px solid #6d3342;margin-top:40px;padding-top:20px;text-align:center;font-size:.85rem;color:#c9aaa7}
+/* drawers + modal */
+.veil{position:fixed;inset:0;background:rgba(40,10,20,.5);opacity:0;pointer-events:none;transition:.3s;z-index:90}
+.veil.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--cream);z-index:100;transform:translateX(100%);transition:.35s;display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.drawer header{position:static;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid #e8d3c0;background:none}
+.drawer h3{font-size:1.8rem}
+.dl{flex:1;overflow:auto;padding:14px 24px}
+.item{display:grid;grid-template-columns:70px 1fr auto;gap:14px;padding:14px 0;border-bottom:1px solid #eedcca;align-items:center}
+.item img{width:70px;height:84px;object-fit:cover;border-radius:10px;background:var(--blush2)}
+.item h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--burg);line-height:1.2}
+.item small{color:#7a6468}
+.qty{display:inline-flex;align-items:center;gap:10px;border:1px solid #dcc4b0;border-radius:20px;margin-top:6px}
+.qty button{width:28px;height:28px}
+.rm{color:#a07c80;font-size:1.2rem}
+.df{padding:20px 24px;border-top:1px solid #e8d3c0}
+.tot{display:flex;justify-content:space-between;font-size:1.2rem;margin-bottom:14px;color:var(--burg)}
+.df .btn{width:100%;text-align:center}
+.modal{position:fixed;inset:0;display:none;place-items:center;z-index:110;padding:16px}
+.modal.on{display:grid}
+.mbox{background:var(--cream);border-radius:var(--r);max-width:900px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.mbox .pic{background:var(--blush2);min-height:360px}
+.mbox .pic img{width:100%;height:100%;object-fit:cover}
+.mbox .det{padding:34px 30px}
+.mbox h2{font-size:2.2rem;line-height:1.1;margin:4px 0 8px}
+.mbox ul{margin:12px 0 16px 18px;font-size:.93rem}
+.mx{position:absolute;top:10px;right:14px;font-size:1.8rem;z-index:2;color:var(--burg)}
+.mrev{margin-top:18px;border-top:1px solid #e8d3c0;padding-top:12px;font-size:.9rem}
+.mrev div{margin:8px 0}
+.row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.row .btn{padding:12px 26px}
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,30px);background:var(--burg);color:#fff;padding:12px 26px;border-radius:30px;opacity:0;transition:.3s;z-index:200;pointer-events:none;font-size:.92rem}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.fg{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){
+ #burger{display:grid}
+ nav{position:absolute;top:76px;left:0;right:0;background:var(--cream);border-bottom:1px solid #e8d3c0;display:none;padding:10px 22px 20px}
+ nav.on{display:block}nav ul{flex-direction:column;align-items:flex-start;gap:16px}
+ .hero .wrap{grid-template-columns:1fr;text-align:center;padding-top:40px}.hero p{margin-inline:auto}.hero .btns{justify-content:center}
+ .hero-art{height:460px}.arch{width:280px;height:440px}
+ .cols,.rv{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr);gap:14px}
+ .about .wrap,.contact .wrap,.mbox{grid-template-columns:1fr}.stats{justify-content:center}
+ section{padding:60px 0}
+}
+@media(max-width:480px){.fg{grid-template-columns:1fr}.search input{min-width:0;width:100%}.search{width:100%}.item{grid-template-columns:60px 1fr auto}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="wrap nav">
+  <a class="logo" data-go="home" aria-label="MAÉLORA home"><b>MAÉLORA</b><small>Wear Your Elegance</small></a>
+  <nav id="nav" aria-label="Main">
+   <ul>
+    <li><a data-go="home">Home</a></li>
+    <li><a data-go="collections">Collections</a></li>
+    <li><a data-go="about">About Us</a></li>
+    <li><a data-go="contact">Contact</a></li>
+   </ul>
+  </nav>
+  <div class="icons">
+   <button class="ib" id="wishBtn" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-9-9.2C1.8 7.6 3.6 4.5 6.8 4.500c2 0 3.6 1.1 5.2 3 1.6-1.9 3.2-3 5.2-3 3.2 0 5 3.1 3.8 6.300C19 15.4 12 20 12 20z"/></svg><span class="badge" id="wCount">0</span></button>
+   <button class="ib" id="cartBtn" aria-label="Shopping cart"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8zM9 8V6a3 3 0 016 0v2"/></svg><span class="badge" id="cCount">0</span></button>
+   <button class="ib" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <svg class="flower" style="left:-50px;top:-40px;width:240px" viewBox="0 0 200 200"><g fill="#fff" fill-opacity=".45" stroke="#B8924A" stroke-opacity=".5"><ellipse cx="100" cy="55" rx="22" ry="45"/><ellipse cx="100" cy="55" rx="22" ry="45" transform="rotate(72 100 100)"/><ellipse cx="100" cy="55" rx="22" ry="45" transform="rotate(144 100 100)"/><ellipse cx="100" cy="55" rx="22" ry="45" transform="rotate(216 100 100)"/><ellipse cx="100" cy="55" rx="22" ry="45" transform="rotate(288 100 100)"/></g><circle cx="100" cy="100" r="10" fill="#B8924A"/></svg>
+ <svg class="flower" style="right:-60px;bottom:-60px;width:280px" viewBox="0 0 200 200"><g fill="#6B1E2E" fill-opacity=".14" stroke="#6B1E2E" stroke-opacity=".3"><ellipse cx="100" cy="55" rx="22" ry="45"/><ellipse cx="100" cy="55" rx="22" ry="45" transform="rotate(60 100 100)"/><ellipse cx="100" cy="55" rx="22" ry="45" transform="rotate(120 100 100)"/><ellipse cx="100" cy="55" rx="22" ry="45" transform="rotate(180 100 100)"/><ellipse cx="100" cy="55" rx="22" ry="45" transform="rotate(240 100 100)"/><ellipse cx="100" cy="55" rx="22" ry="45" transform="rotate(300 100 100)"/></g></svg>
+ <div class="wrap">
+  <div>
+   <span class="script">Maélora</span>
+   <h1>Discover Your Style, Wear Your Elegance</h1>
+   <p>Sarees, gowns and everyday favourites, chosen with care and made to be worn on the days that matter to you.</p>
+   <div class="btns"><button class="btn" data-go="collections">Shop Now</button><button class="btn ghost" data-go="about">Our Story</button></div>
+  </div>
+  <div class="hero-art">
+   <div class="arch"><div class="in"><img id="heroImg" alt="Featured MAÉLORA gown"></div></div>
+   <div class="tag">New season<span>Wedding &amp; festive edit</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="collections">
+ <div class="wrap">
+  <div class="title"><span class="script">Our Collections</span><h2>Find Your Occasion</h2><div class="orn">✿ ✿ ✿</div></div>
+  <div class="cols" id="cols"></div>
+
+  <div class="sub" id="feat"><div class="title"><span class="script">Loved by our customers</span><h2>Featured Products</h2></div><div class="grid" id="featGrid"></div></div>
+  <div class="sub" id="newa"><div class="title"><span class="script">Just landed</span><h2>New Arrivals</h2></div><div class="grid" id="newGrid"></div></div>
+ </div>
+</section>
+
+<section class="shop" id="shop">
+ <div class="wrap">
+  <div class="title"><span class="script">Browse the boutique</span><h2>Shop All Styles</h2></div>
+  <div class="tools">
+   <div class="tabs" id="tabs"></div>
+   <div class="search"><input id="q" type="search" placeholder="Search dresses, sarees, kurtis…" aria-label="Search products"></div>
+  </div>
+  <div class="tools"><div class="chips" id="chips"></div>
+   <select id="sort" aria-label="Sort"><option value="">Sort: Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></div>
+  <div class="grid" id="grid"></div>
+ </div>
+</section>
+
+<section class="about" id="about">
+ <div class="wrap">
+  <div class="pic"><img id="aboutImg" alt="MAÉLORA boutique styling"></div>
+  <div>
+   <span class="script" style="font-size:2.4rem">About Us</span>
+   <h2>Dressing women with grace</h2>
+   <p>MAÉLORA began as a small boutique with one belief: every woman deserves clothes that make her feel graceful, whether she is dressing for a wedding or a Sunday market.</p>
+   <p>We pair traditional craft with modern cuts, and we choose soft fabrics, honest fits and finishing you can feel. Each piece is checked by hand before it leaves our studio.</p>
+   <div class="stats"><div><b>15k+</b><span>Happy customers</span></div><div><b>300+</b><span>Designs</span></div><div><b>4.8★</b><span>Average rating</span></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="reviews">
+ <div class="wrap">
+  <div class="title"><span class="script">Kind words</span><h2>Customer Reviews</h2></div>
+  <div class="rv">
+   <blockquote><div class="stars">★★★★★</div><p>My Banarasi saree arrived beautifully packed and the colour is richer than the photos. I got compliments all evening.</p><cite>Priya S., Chennai</cite></blockquote>
+   <blockquote><div class="stars">★★★★★</div><p>The size guide was spot on. The gown fit perfectly and the fabric moves so well. I will order again.</p><cite>Ananya R., Bengaluru</cite></blockquote>
+   <blockquote><div class="stars">★★★★☆</div><p>Comfortable everyday kurtis that still look polished. Delivery was quick and exchange was easy.</p><cite>Meera K., Coimbatore</cite></blockquote>
+  </div>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="wrap">
+  <div>
+   <span class="script" style="font-size:2.4rem">Get in touch</span>
+   <h2>Contact Us</h2>
+   <p>Need help with sizing or an order? We reply within one working day.</p>
+   <ul>
+    <li><span>✿</span>12 Rose Garden Street, T. Nagar, Chennai 600017</li>
+    <li><span>✿</span>+91 98765 43210</li>
+    <li><span>✿</span>hello@maelora.in</li>
+    <li><span>✿</span>Mon–Sat, 10 am – 8 pm</li>
+   </ul>
+  </div>
+  <form class="form" id="form" novalidate>
+   <input id="fn" placeholder="Your name" required aria-label="Your name">
+   <input id="fe" type="email" placeholder="Email address" required aria-label="Email">
+   <select id="ft" aria-label="Topic"><option>Order enquiry</option><option>Sizing help</option><option>Returns &amp; exchange</option><option>Other</option></select>
+   <textarea id="fm" placeholder="How can we help?" required aria-label="Message"></textarea>
+   <button class="btn" type="submit">Send message</button>
+   <div class="ok" id="ok" role="status"></div>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="fg">
+   <div><a class="logo" data-go="home" style="align-items:flex-start"><b>MAÉLORA</b><small>Wear Your Elegance</small></a><p style="margin-top:14px;font-size:.93rem;max-width:280px">Luxury boutique fashion for traditional, western and casual wear.</p>
+    <div class="soc">
+     <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg></a>
+     <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
+     <a href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8c3-1 5 1 4.5 3.500S13 15 11.5 14.500M11 11l-2 9"/></svg></a>
+     <a href="https://wa.me/919876543210" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M4 20l1.2-4A8 8 0 1112 20a8 8 0 01-4-1l-4 1z"/></svg></a>
+    </div></div>
+   <div><h4>Quick Links</h4><ul><li><a data-go="home">Home</a></li><li><a data-go="collections">Collections</a></li><li><a data-go="about">About Us</a></li><li><a data-go="contact">Contact</a></li><li><a id="fW">Wishlist</a></li><li><a id="fC">Shopping Cart</a></li></ul></div>
+   <div><h4>Collections</h4><ul><li><a data-cat="Traditional Wears">Traditional Wears</a></li><li><a data-cat="Western Wears">Western Wears</a></li><li><a data-cat="Casual Wears">Casual Wears</a></li></ul></div>
+   <div><h4>Contact</h4><ul><li>12 Rose Garden Street, T. Nagar, Chennai</li><li>+91 98765 43210</li><li>hello@maelora.in</li></ul></div>
+  </div>
+  <div class="copy">© 2026 MAÉLORA – Wear Your Elegance. All rights reserved.</div>
+ </div>
+</footer>
+
+<div class="veil" id="veil"></div>
+<aside class="drawer" id="cartD" aria-label="Shopping cart"><header><h3>Shopping Cart</h3><button class="ib" data-close aria-label="Close">✕</button></header><div class="dl" id="cartL"></div><div class="df"><div class="tot"><span>Total</span><b id="cartT">₹0</b></div><button class="btn" id="checkout">Checkout</button></div></aside>
+<aside class="drawer" id="wishD" aria-label="Wishlist"><header><h3>Wishlist</h3><button class="ib" data-close aria-label="Close">✕</button></header><div class="dl" id="wishL"></div></aside>
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="mbox" id="mbox"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ---------- data ---------- */
+const SIZES=["XS","S","M","L","XL","XXL"];
+const CATS={
+ "Traditional Wears":["Sarees","Kurtis","Salwar Suits","Lehengas","Anarkali Dresses"],
+ "Western Wears":["Gowns","Maxi Dresses","Tops","Jumpsuits","Skirts"],
+ "Casual Wears":["T-shirts","Jeans","Casual Tops","Leggings","Everyday Kurtis"]};
+/* shape: g=gown, t=top, p=pants, s=skirt, j=jumpsuit, r=saree */
+const P=[
+ [1,"Banarasi Silk Saree","Traditional Wears","Sarees",8499,10999,"r","#8E2B3E","#B8924A",1,1,"Handwoven-style silk blend with a gold zari border and a matching blouse piece."],
+ [2,"Chikankari Straight Kurti","Traditional Wears","Kurtis",1899,2399,"t","#F4D9D6","#B8924A",1,0,"Soft cotton kurti with delicate hand-style chikankari embroidery."],
+ [3,"Rose Embroidered Salwar Suit","Traditional Wears","Salwar Suits",3499,4299,"g","#E7A9B1","#6B1E2E",0,1,"Three-piece set with floral embroidery, churidar bottom and chiffon dupatta."],
+ [4,"Royal Burgundy Lehenga","Traditional Wears","Lehengas",14999,18999,"g","#6B1E2E","#D4AF6A",1,1,"Flared bridal-style lehenga with gold sequin work and a net dupatta."],
+ [5,"Gold Anarkali Dress","Traditional Wears","Anarkali Dresses",5999,7499,"g","#C9A15B","#6B1E2E",0,1,"Floor-length Anarkali with a fitted bodice and a generous flare."],
+ [6,"Blush Satin Evening Gown","Western Wears","Gowns",6999,8999,"g","#F2C4C9","#B8924A",1,1,"Draped satin gown with a flattering waist and a sweeping hemline."],
+ [7,"Floral Maxi Dress","Western Wears","Maxi Dresses",2799,3499,"g","#F9E6E4","#C0556A",0,1,"Light flowing maxi with a floral print, ideal for brunches and holidays."],
+ [8,"Silk Wrap Top","Western Wears","Tops",1499,1999,"t","#F7EBD9","#6B1E2E",0,1,"Elegant wrap-style top in a smooth silk-feel fabric."],
+ [9,"Cream Wide-Leg Jumpsuit","Western Wears","Jumpsuits",3299,3999,"j","#EFE3CF","#B8924A",1,0,"Tailored jumpsuit with a cinched waist and wide, easy legs."],
+ [10,"Pleated Midi Skirt","Western Wears","Skirts",1799,2299,"s","#C97C8A","#F4D9D6",0,1,"Fluid pleated skirt that moves beautifully and pairs with anything."],
+ [11,"Everyday Cotton T-shirt","Casual Wears","T-shirts",699,899,"t","#F3D4D6","#6B1E2E",0,1,"Breathable combed-cotton tee in a relaxed everyday fit."],
+ [12,"High-Rise Straight Jeans","Casual Wears","Jeans",2199,2799,"p","#8FA3BF","#3A2A2C",0,0,"Stretch denim with a high waist and a clean straight leg."],
+ [13,"Ruffle Casual Top","Casual Wears","Casual Tops",999,1299,"t","#F9E6E4","#B8924A",1,0,"Playful ruffle-sleeve top that goes from coffee dates to evenings out."],
+ [14,"Soft Stretch Leggings","Casual Wears","Leggings",599,799,"p","#6B1E2E","#B8924A",0,1,"Four-way stretch leggings that stay opaque and comfortable all day."],
+ [15,"Block Print Everyday Kurti","Casual Wears","Everyday Kurtis",1199,1499,"t","#E7A9B1","#6B1E2E",1,1,"Lightweight cotton kurti with a hand block-print look for daily wear."]
+].map(a=>({id:a[0],name:a[1],cat:a[2],sub:a[3],price:a[4],mrp:a[5],shape:a[6],c1:a[7],c2:a[8],isNew:!!a[9],feat:!!a[10],desc:a[11]}));
+const REVIEWS=[["Divya","Beautiful fabric and the fit was true to size.",5],["Shalini","Lovely colour, exactly like the photo. Fast delivery.",5],["Keerthana","Good quality for the price. Would buy again.",4]];
+
+/* ---------- artwork (inline SVG, replace with real photos by setting p.img) ---------- */
+const SH={
+ g:"M84 38L100 52 116 38 126 96 150 232Q100 250 50 232L74 96Z",
+ t:"M68 58L90 48Q100 62 110 48L132 58 156 104 130 114 126 196H74L70 114 44 104Z",
+ p:"M68 48H132L142 236H108L100 116 92 236H58Z",
+ s:"M76 70H124L156 226Q100 244 44 226Z",
+ j:"M84 38L100 52 116 38 126 100 140 238H106L100 150 94 238H60L74 100Z",
+ r:"M78 38L100 54 122 38 132 100 140 232Q100 246 60 232L68 100ZM96 54L140 100 146 150 130 150 120 100Z"};
+function flower(x,y,s,c){let o="";for(let i=0;i<5;i++)o+=`<ellipse cx="${x}" cy="${y-s}" rx="${s*.5}" ry="${s}" transform="rotate(${i*72} ${x} ${y})"/>`;return `<g fill="${c}" fill-opacity=".35">${o}</g><circle cx="${x}" cy="${y}" r="${s*.28}" fill="#B8924A"/>`}
+function art(p,big){
+ const g=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250"><defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBF4EA"/><stop offset="1" stop-color="#F3D4D6"/></linearGradient><linearGradient id="d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${p.c1}"/><stop offset="1" stop-color="${p.c2}" stop-opacity=".85"/></linearGradient></defs><rect width="200" height="250" fill="url(#b)"/>${flower(28,34,18,"#B8924A")}${flower(176,214,22,"#6B1E2E")}${flower(170,40,10,"#E7A9B1")}<ellipse cx="100" cy="236" rx="52" ry="6" fill="#6B1E2E" fill-opacity=".12"/><circle cx="100" cy="28" r="12" fill="#E8C9B0"/><path d="${SH[p.shape]}" fill="url(#d)" stroke="#B8924A" stroke-width="1.2"/><g fill="#fff" fill-opacity=".5"><circle cx="90" cy="130" r="2.5"/><circle cx="112" cy="160" r="2.5"/><circle cx="98" cy="190" r="2.5"/><circle cx="120" cy="120" r="2"/></g></svg>`;
+ return "data:image/svg+xml;utf8,"+encodeURIComponent(g)}
+const img=p=>p.img||art(p);
+
+/* ---------- state ---------- */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const money=n=>"₹"+n.toLocaleString("en-IN");
+function load(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+let cart=load("maelora_cart",[]),wish=load("maelora_wish",[]);
+let f={cat:"All",sub:"All",q:"",sort:""};
+const picked={}; // chosen size per product
+let toastT;
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("on"),2000)}
+const rating=p=>(4+((p.id*7)%9)/10).toFixed(1);
+
+/* ---------- render ---------- */
+function card(p){
+ const on=wish.includes(p.id),sz=picked[p.id]||"";
+ return `<article class="card"><div class="pic" data-open="${p.id}">${p.isNew?'<span class="new">NEW</span>':""}<img loading="lazy" src="${img(p)}" alt="${p.name}">
+ <button class="heart ${on?"on":""}" data-wish="${p.id}" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-9-9.200C1.8 7.6 3.6 4.5 6.8 4.500c2 0 3.6 1.1 5.2 3 1.6-1.9 3.2-3 5.2-3 3.2 0 5 3.1 3.8 6.300C19 15.4 12 20 12 20z"/></svg></button></div>
+ <div class="info"><span class="cat">${p.sub}</span><h3 data-open="${p.id}">${p.name}</h3><div class="stars">★★★★★ <span style="color:#7a6468;letter-spacing:0">${rating(p)}</span></div>
+ <div class="price">${money(p.price)}<s>${money(p.mrp)}</s></div>
+ <div class="sizes">${SIZES.map(s=>`<button class="sz ${sz===s?"on":""}" data-size="${p.id}|${s}">${s}</button>`).join("")}</div>
+ <button class="add" data-add="${p.id}">Add to Cart</button></div></article>`}
+function renderShop(){
+ let l=P.filter(p=>(f.cat=="All"||p.cat==f.cat)&&(f.sub=="All"||p.sub==f.sub)&&(!f.q||(p.name+p.sub+p.cat+p.desc).toLowerCase().includes(f.q.toLowerCase())));
+ if(f.sort=="lo")l=[...l].sort((a,b)=>a.price-b.price);if(f.sort=="hi")l=[...l].sort((a,b)=>b.price-a.price);
+ $("#grid").innerHTML=l.length?l.map(card).join(""):'<div class="empty"><h3>No styles found</h3><p>Try another word or clear the filters.</p></div>';
+ $("#tabs").innerHTML=["All",...Object.keys(CATS)].map(c=>`<button class="tab ${f.cat==c?"on":""}" data-tab="${c}">${c=="All"?"All Styles":c}</button>`).join("");
+ const subs=f.cat=="All"?[]:CATS[f.cat];
+ $("#chips").innerHTML=subs.length?["All",...subs].map(s=>`<button class="chip ${f.sub==s?"on":""}" data-chip="${s}">${s}</button>`).join(""):"";
+}
+function renderHome(){
+ $("#cols").innerHTML=Object.keys(CATS).map(c=>{const rep=P.find(p=>p.cat==c&&p.feat);return `<div class="col" data-cat="${c}" tabindex="0" role="button"><div class="img"><img src="${img(rep)}" alt="${c}"></div><div class="body"><h3>${c}</h3><ul>${CATS[c].map(s=>`<li>${s}</li>`).join("")}</ul><span class="link">EXPLORE COLLECTION</span></div></div>`}).join("");
+ $("#featGrid").innerHTML=P.filter(p=>p.feat).slice(0,4).map(card).join("");
+ $("#newGrid").innerHTML=P.filter(p=>p.isNew).slice(0,4).map(card).join("");
+ $("#heroImg").src=img(P[5]);$("#aboutImg").src=img(P[3]);
+}
+function refresh(){renderShop();renderHome();renderCart();renderWish();
+ $("#cCount").textContent=cart.reduce((a,c)=>a+c.qty,0);$("#wCount").textContent=wish.length;save("maelora_cart",cart);save("maelora_wish",wish)}
+function renderCart(){
+ const rows=cart.map((c,i)=>{const p=P.find(x=>x.id==c.id);return `<div class="item"><img src="${img(p)}" alt=""><div><h4>${p.name}</h4><small>Size ${c.size} · ${money(p.price)}</small><br><span class="qty"><button data-q="${i}|-1" aria-label="Less">−</button>${c.qty}<button data-q="${i}|1" aria-label="More">+</button></span></div><button class="rm" data-rm="${i}" aria-label="Remove">✕</button></div>`});
+ $("#cartL").innerHTML=rows.length?rows.join(""):'<p class="empty">Your cart is empty.<br>Add something lovely.</p>';
+ $("#cartT").textContent=money(cart.reduce((a,c)=>a+c.qty*P.find(x=>x.id==c.id).price,0));
+}
+function renderWish(){
+ $("#wishL").innerHTML=wish.length?wish.map(id=>{const p=P.find(x=>x.id==id);return `<div class="item"><img src="${img(p)}" alt=""><div><h4>${p.name}</h4><small>${money(p.price)}</small><br><button class="btn" style="padding:6px 16px;font-size:.8rem;margin-top:6px" data-open="${p.id}">View</button></div><button class="rm" data-wish="${p.id}" aria-label="Remove">✕</button></div>`}).join(""):'<p class="empty">Your wishlist is empty.<br>Tap the heart on any style you love.</p>';
+}
+
+/* ---------- actions ---------- */
+function addCart(id){
+ const size=picked[id];if(!size){toast("Please select a size first");return false}
+ const e=cart.find(c=>c.id==id&&c.size==size);e?e.qty++:cart.push({id,size,qty:1});
+ refresh();toast("Added to cart");return true}
+function toggleWish(id){const i=wish.indexOf(id);i>-1?(wish.splice(i,1),toast("Removed from wishlist")):(wish.push(id),toast("Saved to wishlist"));refresh();if($("#modal").classList.contains("on"))openModal(id)}
+function drawer(id){closeAll();$(id).classList.add("on");$("#veil").classList.add("on")}
+function closeAll(){$$(".drawer").forEach(d=>d.classList.remove("on"));$("#modal").classList.remove("on");$("#veil").classList.remove("on")}
+function go(id){closeAll();$("#nav").classList.remove("on");const el=document.getElementById(id);el&&el.scrollIntoView({behavior:"smooth"})}
+function openModal(id){
+ const p=P.find(x=>x.id==id);closeAll();
+ $("#mbox").innerHTML=`<button class="mx" data-close aria-label="Close">✕</button><div class="pic"><img src="${img(p)}" alt="${p.name}"></div><div class="det"><span class="cat" style="color:#B8924A">${p.cat} · ${p.sub}</span><h2>${p.name}</h2><div class="stars">★★★★★ ${rating(p)}</div><div class="price" style="font-size:1.4rem;margin:6px 0">${money(p.price)}<s>${money(p.mrp)}</s></div><p>${p.desc}</p>
+ <ul><li>Free shipping on orders above ₹1,999</li><li>7-day easy exchange</li><li>Machine wash gentle, dry in shade</li></ul>
+ <div class="sizes">${SIZES.map(s=>`<button class="sz ${picked[id]==s?"on":""}" data-size="${id}|${s}" data-m="1">${s}</button>`).join("")}</div>
+ <div class="row"><button class="btn" data-add="${id}" data-m="1">Add to Cart</button><button class="btn ghost" data-wish="${id}">${wish.includes(id)?"Remove from Wishlist":"Add to Wishlist"}</button></div>
+ <div class="mrev"><b>Customer reviews</b>${REVIEWS.map(r=>`<div><span class="stars">${"★".repeat(r[2])}${"☆".repeat(5-r[2])}</span> <b>${r[0]}</b><br>${r[1]}</div>`).join("")}</div></div>`;
+ $("#modal").classList.add("on");$("#veil").classList.add("on")}
+
+document.addEventListener("click",e=>{
+ const t=e.target.closest("[data-go],[data-cat],[data-tab],[data-chip],[data-size],[data-add],[data-wish],[data-open],[data-q],[data-rm],[data-close]");
+ if(!t){if(e.target.id=="modal")closeAll();return}
+ const d=t.dataset;
+ if(d.go)go(d.go);
+ else if(d.cat){f={cat:d.cat,sub:"All",q:"",sort:""};$("#q").value="";closeAll();refresh();go("shop")}
+ else if(d.tab){f.cat=d.tab;f.sub="All";renderShop()}
+ else if(d.chip){f.sub=d.chip;renderShop()}
+ else if(d.size){const[i,s]=d.size.split("|");picked[i]=s;refresh();if(d.m)openModal(+i)}
+ else if(d.add){const ok=addCart(+d.add);if(ok&&d.m)openModal(+d.add)}
+ else if(d.wish)toggleWish(+d.wish);
+ else if(d.open)openModal(+d.open);
+ else if(d.q){const[i,n]=d.q.split("|");cart[i].qty+=+n;if(cart[i].qty<1)cart.splice(i,1);refresh()}
+ else if(d.rm){cart.splice(+d.rm,1);refresh()}
+ else if(d.close!==undefined)closeAll();
+});
+document.addEventListener("keydown",e=>{if(e.key=="Escape")closeAll();if(e.key=="Enter"&&e.target.classList.contains("col"))e.target.click()});
+$("#veil").onclick=closeAll;
+$("#cartBtn").onclick=$("#fC").onclick=()=>drawer("#cartD");
+$("#wishBtn").onclick=$("#fW").onclick=()=>drawer("#wishD");
+$("#burger").onclick=()=>$("#nav").classList.toggle("on");
+$("#q").oninput=e=>{f.q=e.target.value.trim();renderShop();if(f.q)document.getElementById("shop").scrollIntoView({behavior:"smooth"})};
+$("#sort").onchange=e=>{f.sort=e.target.value;renderShop()};
+$("#checkout").onclick=()=>{if(!cart.length){toast("Your cart is empty");return}cart=[];refresh();closeAll();toast("Thank you! Your order has been placed (demo)")};
+$("#form").onsubmit=e=>{e.preventDefault();const n=$("#fn").value.trim(),m=$("#fe").value.trim(),g=$("#fm").value.trim(),o=$("#ok");
+ o.style.display="block";
+ if(!n||!/^\S+@\S+\.\S+$/.test(m)||!g){o.textContent="Please enter your name, a valid email and a message.";return}
+ o.textContent=`Thank you, ${n}. We have received your message and will reply to ${m} soon.`;e.target.reset();};
+refresh();
+</script>
+</body>
+</html>
